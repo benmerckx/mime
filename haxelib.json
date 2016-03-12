@@ -1,0 +1,10 @@
+{
+  "name": "mime",
+  "url" : "https://github.com/benmerckx/mime",
+  "license": "MIT",
+  "tags": ["js", "html", "web"],
+  "description": "Media Type Database",
+  "version": "0.0.0",
+  "releasenote": "Alpha",
+  "contributors": ["benmerckx"]
+}
