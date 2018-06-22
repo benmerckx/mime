@@ -13,3 +13,9 @@ Mime.extension('application/pdf');  // pdf
 
 Mime.db.get('text/html');           // {compressible => true, extensions => [html,htm,shtml], source => iana}				
 ```
+
+You will need to download [db.json ](https://raw.githubusercontent.com/jshttp/mime-db/master/db.json) and configure it using the -resource compile flag, the resource must be named mime-db:
+
+```
+-resource db.json@mime-db
+```
