@@ -19,7 +19,7 @@ env:
 install:
   - yarn global add lix && yarn
   - lix install haxe $HAXE_VERSION && lix use haxe $HAXE_VERSION
-  - neko
+  - neko -version
   - haxe -version
 
 script:
