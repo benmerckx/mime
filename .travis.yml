@@ -1,0 +1,29 @@
+sudo: required
+dist: trusty
+
+language: node_js
+node_js: 11
+
+cache:
+  yarn: true
+  directories:
+    - $HOME/haxe
+
+os:
+  - linux
+
+env:
+  - HAXE_VERSION=3.4.7
+  - HAXE_VERSION=4.0.0-rc.1
+
+install:
+  - yarn && lix install haxe $HAXE_VERSION && lix use haxe $HAXE_VERSION
+
+script:
+  - lix run travix interp
+  - lix run travix neko
+  - lix run travix node
+  - lix run travix python
+  - lix run travix java
+  - lix run travix php
+  - lix run travix cpp

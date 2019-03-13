@@ -1,0 +1,5 @@
+-cp tests
+-lib tink_unittest
+-lib travix
+-main RunTests
+-dce full
