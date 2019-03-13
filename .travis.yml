@@ -27,6 +27,10 @@ script:
   - lix run travix neko
   - lix run travix node
   - lix run travix python
-  - lix run travix java
+  - lix run travix js
+  - lix run travix flash
+  - lix install haxelib:hxjava && lix run travix java
   - lix run travix php
-  - lix run travix cpp
+  - lix install haxelib:hxcpp && lix run travix cpp
+  - lix run travix lua
+  - lix install haxelib:hxcs && lix run travix cs
