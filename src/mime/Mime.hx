@@ -47,10 +47,9 @@ class Mime {
 	
 	public static function init() {
 		#if macro
-		switch Context.resolvePath('mime-db.json') {
-			case null: throw 'Could not find mime-db.json in classpath';
-			case path: Context.addResource('mime-db', sys.io.File.getBytes(path));
-		}
+		Context.addResource('mime-db', sys.io.File.getBytes(
+			Context.resolvePath('mime-db.json')
+		));
 		#end
 	}
 }

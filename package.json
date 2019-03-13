@@ -2,9 +2,9 @@
   "scripts": {
     "test": "lix run travix node",
     "submit": "run-s prepare zip submit-haxelib cleanup",
-    "prepare": "cp node_modules/mime-db/db.json mime-db.json",
+    "prepare": "cp node_modules/mime-db/db.json src/mime-db.json",
     "postinstall": "lix download",
-    "zip": "bestzip mime.zip src/* haxelib.json extraParams.hxml mime-db.json README.md",
+    "zip": "bestzip mime.zip src/* haxelib.json extraParams.hxml README.md",
     "submit-haxelib": "haxelib submit mime.zip",
     "cleanup": "rm mime.zip"
   },

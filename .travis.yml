@@ -13,7 +13,6 @@ os:
   - linux
 
 env:
-  - HAXE_VERSION=3.4.7
   - HAXE_VERSION=4.0.0-rc.1
 
 install:
@@ -32,7 +31,7 @@ script:
   #- lix install haxelib:hxjava && lix run travix java
   #- lix install haxelib:hxcs && lix run travix cs
   #- lix run travix lua
-  # These work slow down the tests a lot
+  # These work but slow down the tests a lot
   #- lix install haxelib:hxcpp && lix run travix cpp
   #- lix run travix js
   #- lix run travix flash
