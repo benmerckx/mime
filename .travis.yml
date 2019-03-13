@@ -2,7 +2,7 @@ sudo: required
 dist: trusty
 
 language: node_js
-node_js: 11
+node_js: 10
 
 cache:
   yarn: true
@@ -17,7 +17,10 @@ env:
   - HAXE_VERSION=4.0.0-rc.1
 
 install:
-  - yarn && lix install haxe $HAXE_VERSION && lix use haxe $HAXE_VERSION
+  - yarn global add lix && yarn
+  - lix install haxe $HAXE_VERSION && lix use haxe $HAXE_VERSION
+  - neko
+  - haxe -version
 
 script:
   - lix run travix interp
