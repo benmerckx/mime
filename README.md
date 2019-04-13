@@ -1,5 +1,7 @@
 # mime
 
+[![Build Status](https://travis-ci.org/benmerckx/mime.svg?branch=master)](https://travis-ci.org/benmerckx/mime)
+
 Packages [mime-db](https://github.com/jshttp/mime-db) for haxelib
 
 ```haxe
