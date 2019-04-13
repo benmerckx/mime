@@ -19,7 +19,12 @@ typedef TypeInfo = {
 
 class Mime {
 	#if !macro
-	public static var db(default, never): DynamicAccess<TypeInfo> = data();
+	public static var db(default, never): DynamicAccess<TypeInfo> = 
+		#if (java || cpp)
+			Json.parse(Resource.getString('mime-db'));
+		#else
+			data();
+		#end
 
 	@:isVar
 	public static var extensions(get, never): Map<String, String>;
@@ -46,6 +51,17 @@ class Mime {
 			default: null;
 		}
 	#end
+	
+	
+	public static function init() {
+		#if macro
+		if(Context.defined('java') || Context.defined('cpp')) {
+			Context.addResource('mime-db', sys.io.File.getBytes(
+				Context.resolvePath('mime-db.json')
+			));
+		}
+		#end
+	}
 	
 	public static macro function data() {
 		#if macro
