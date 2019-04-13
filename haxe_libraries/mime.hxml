@@ -1,2 +1,2 @@
 -cp src
-extraParams.hxml
+--macro mime.Mime.init()

@@ -3,8 +3,11 @@ package mime;
 import haxe.DynamicAccess;
 import haxe.Resource;
 import haxe.Json;
+
 #if macro
 import haxe.macro.Context;
+import sys.FileSystem;
+import sys.io.File;
 #end
 
 typedef TypeInfo = {
@@ -17,7 +20,11 @@ typedef TypeInfo = {
 class Mime {
 	#if !macro
 	public static var db(default, never): DynamicAccess<TypeInfo> = 
-		Json.parse(Resource.getString('mime-db'));
+		#if (java || cpp)
+			Json.parse(Resource.getString('mime-db'));
+		#else
+			data();
+		#end
 
 	@:isVar
 	public static var extensions(get, never): Map<String, String>;
@@ -45,11 +52,24 @@ class Mime {
 		}
 	#end
 	
+	
 	public static function init() {
 		#if macro
-		Context.addResource('mime-db', sys.io.File.getBytes(
-			Context.resolvePath('mime-db.json')
-		));
+		if(Context.defined('java') || Context.defined('cpp')) {
+			Context.addResource('mime-db', sys.io.File.getBytes(
+				Context.resolvePath('mime-db.json')
+			));
+		}
+		#end
+	}
+	
+	public static macro function data() {
+		#if macro
+		var path = Context.resolvePath('mime-db.json');
+		return Context.parseInlineString(
+			File.getContent(path),
+			Context.makePosition({file: path, min: 0, max: FileSystem.stat(path).size})
+		);
 		#end
 	}
 }
