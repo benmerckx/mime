@@ -27,10 +27,10 @@ class Mime {
 		#end
 
 	@:isVar
-	public static var extensions(get, never): Map<String, String>;
+	public static var extensions(get, null): Map<String, String>;
 	static function get_extensions()
 		return if (extensions != null) extensions else {
-			var extensions = new Map();
+			extensions = new Map();
 			for (type in db.keys())
 				switch db.get(type) {
 					case {extensions: e} if (e != null):
